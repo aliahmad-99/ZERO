@@ -36,6 +36,7 @@ public class Location {
 	public Location getExit(Direction dir) {
 		return exits.get(dir);
 	}
+	// getter for Location name
 	public String getName() {
 		return name;
 	}

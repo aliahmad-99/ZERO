@@ -22,13 +22,16 @@ public enum Direction {
 	 *@return the direction, null if not found
 	 */
 	public static Direction fromString(String direction) {
-		for(Direction dir : Direction.values()) {
-			if(dir.getName().equalsIgnoreCase(direction)) {
-				return dir;
-			}
+		if(direction == null) {
+			return null;
 		}
-		return null;
+		switch (direction.trim().toLowerCase()) {
+		case "north" : return Direction.NORTH;
+		case "south" : return Direction.SOUTH;
+		case "east" : return Direction.EAST;
+		case "west": return Direction.WEST;
+		default : return null;
+		
+		}
 	}
-
-	
 }

@@ -1,3 +1,4 @@
+
 package Zero;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +11,30 @@ public class Inventory {
 		this.items = new ArrayList<>();
 		this.capacity = 3; // default maximum capacity a player can hold
 	}
-	
+	// addition of item
 	public boolean addItem(Item item) {
 		if (items.size() < capacity ) {
 			items.add(item);
 			return true;
 		} else {
-			System.out.println("Inventory if full soldier!");
+			
 			return false;
 		}
 	}
-	
+	// remove item from inventory
 	public boolean removeItem(Item item) {
-		return items.remove(item);
+			return items.remove(item);
+		}
+	
+	//getter for items
+	public List<Item> getItems(){
+		return items;
 	}
-	public Item getItem() {
-		return items.get(0);
+	//getter for capacity
+	public int getCapacity() {
+		return capacity;
 	}
+	// return all available items
 	public void listItems() {
 		System.out.println("The items in your possesion: ");
 		for(Item item : items) {

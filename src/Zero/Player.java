@@ -14,6 +14,7 @@ public class Player {
 		this.health = health;
 		this.attackdmg = attackdmg;
 		this.currentLocation = startLocation;
+		this.inventory = new Inventory();
 	}
 	/*
 	 * move the player to another direction
@@ -29,47 +30,76 @@ public class Player {
 			System.out.println("can't go this way soldier!");
 		}		
 	}
-	
+	/*
+	 * attack a villain
+	 * 
+	 * @param villian : villain
+	 * 
+	 */
 	public void attack(Villians villians) {
-		System.out.println(" You are attacking " + villians.getName());
+		System.out.println("You are attacking " + villians.getName());
 		villians.takeDamage(this.getDamage());
 		if (villians.getHealth() <= 0) {
-			System.out.println("You defeated " + villians.getName() );
 			inventory.addItem(villians.getLoot());
 		}
 	}
+	/*
+	 * take damage from a player
+	 * 
+	 * @param amount : amount of damage to be taken
+	 */
 	public void takeDamage(int amount) {
 		health -= amount;
 		System.out.println("You took " + amount + " of damage");
 		
 		if (health <= 0) {
-			health  = 0; // make sure health doesnt drop below zero
+			health  = 0; // make sure health doesn't drop below zero
 			System.out.println("you have been defeated! GAME OVER!!");
 			// add what happens after defeat
 		}
 	}
-	
+	// adding an item to inventory
 	public void addItem(Item item) {
 		inventory.addItem(item);
 		System.out.println(item.getName() + " is now yours");
 	}
+	//usage of item in an inventory
 	public void useItem(Item item) {
 		if(inventory.removeItem(item)) {
 			System.out.println("Using " + item.getName());
 		} else {
-			System.out.println(" Item not found ");
+			System.out.println("Item not found ");
 		}
 	}
+	// increase player health after using an item
+	public void increaseHealth(int amount) {
+		this.health += amount;
+		System.out.println("health increased by: " + amount);
+	}
+	// increase of player damage after gaining an item
+	public void increaseDamage(int amount) {
+		this.attackdmg += amount;
+		System.out.println("Attack damage increased by: " + amount);
+	}
+	// getter for inventory
 	public Inventory getInventory() {
 		return inventory;
 	}
+	// getter for player current location
 	public Location getLocation() {
 		return currentLocation;
 	}
+	//getter for player name
 	public String getName() {
 		return name;
 	}
+	// getter for player damage
 	public int getDamage() {
 		return attackdmg;
 	}
+	// getter for player health
+	public int getHealth() {
+		return health;
+	}
+	
 }
