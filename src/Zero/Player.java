@@ -54,8 +54,6 @@ public class Player {
 		
 		if (health <= 0) {
 			health  = 0; // make sure health doesn't drop below zero
-			System.out.println("you have been defeated! GAME OVER!!");
-			// add what happens after defeat
 		}
 	}
 	// adding an item to inventory
@@ -66,7 +64,8 @@ public class Player {
 	//usage of item in an inventory
 	public void useItem(Item item) {
 		if(inventory.removeItem(item)) {
-			System.out.println("Using " + item.getName());
+			item.use(this);
+			
 		} else {
 			System.out.println("Item not found ");
 		}
@@ -80,6 +79,9 @@ public class Player {
 	public void increaseDamage(int amount) {
 		this.attackdmg += amount;
 		System.out.println("Attack damage increased by: " + amount);
+	}
+	public void setCurrentLocation(Location location) {
+		this.currentLocation = location;
 	}
 	// getter for inventory
 	public Inventory getInventory() {

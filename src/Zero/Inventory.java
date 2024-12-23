@@ -6,7 +6,7 @@ import java.util.List;
 public class Inventory {
 	private List<Item> items;  // List of items in inventory
 	private int capacity; // capacity of inventory
-	// contructor for new inventory
+	// constructor for new inventory
 	public Inventory() {
 		this.items = new ArrayList<>();
 		this.capacity = 3; // default maximum capacity a player can hold
@@ -38,7 +38,7 @@ public class Inventory {
 	public void listItems() {
 		System.out.println("The items in your possesion: ");
 		for(Item item : items) {
-			System.out.println(item.getName() + item.getDescription());
+			System.out.println(item.getName() + " " + item.getDescription());
 		}
 	}
 	

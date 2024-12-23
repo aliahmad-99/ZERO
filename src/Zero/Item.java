@@ -22,9 +22,9 @@ public class Item {
 	 */
 	public void use(Player player) {
 		System.out.println("You will use the " + name + ": " + effect + ".");
-		if(this.itemType == "Health") {
+		if(this.itemType == "health") {
 			player.increaseHealth(30);
-			} else if (this.itemType == "Attack") {
+			} else if (this.itemType == "attack") {
 				player.increaseDamage(30);
 			} else {
 				return;
