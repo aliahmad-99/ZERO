@@ -128,7 +128,7 @@ public class GameHelper {
 		} else if (input.equals("explore")) {
 			System.out.println("You are in " + currentLocation.getName() + ":" + currentLocation.getDescription());
 		} else if (input.equals("help all commands")) {
-			System.out.println("commands : 'go [direction]' , 'explore', 'attack', 'use [item]'");
+			System.out.println("commands : 'go [direction]' , 'explore', 'attack', 'use [item]' , show health , show attack damage");
 		} else if (input.startsWith("go ")) {
 			// handle movement of the player
 			handleMovement(input.substring(3), player, currentLocation, levelOne, levelTwo, levelThree); // take the input after 'go ' to trigger the location
@@ -144,7 +144,12 @@ public class GameHelper {
 			System.out.println("try 'help'");
 		} else if (input.equals("go")) {
 			System.out.println("go where solider? specify a direction");
-		} else if (input.equals("attack")) {
+		} else if (input.equals("show health")) {
+			System.out.println("current health = " + player.getHealth());
+		} else if (input.equals("show attack damage")) {
+			System.out.println("current attack damage = " + player.getDamage());
+		}
+		else if (input.equals("attack")) {
 			handleBattle(player, currentLocation);
 		} else if (input.equals("move on")) {
 			System.out.println("go in a certain direction to move on!");
