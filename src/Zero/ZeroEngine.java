@@ -19,8 +19,7 @@ public class ZeroEngine {
         while (GameHelper.isRun()) {
             System.out.print("> ");
             String input = scanner.nextLine().trim().toLowerCase();
-            GameHelper.processCommand(input, player, player.getLocation(), true, false ,false);
-           
+            GameHelper.processCommand(input, player, player.getLocation());
         }
        scanner.close();
     }

@@ -118,12 +118,10 @@ public class GameHelper {
 	 * 
 	 * 
 	 */
-	public static void processCommand(String input, Player player, Location currentLocation, boolean levelOne,
-			boolean levelTwo, boolean levelThree) {
+	public static void processCommand(String input, Player player, Location currentLocation) {
 		if (input.equals("help")) {
 			System.out.println("commands : 'go [direction]' , 'explore', 'help all commands'");
-			System.out.println(
-					"help all commands will show all the commands you can use in the game, but some are for later use");
+			System.out.println("help all commands will show all the commands you can use in the game, but some are for later use");
 			System.out.println("direction can be : 'east' , 'west' , 'north' , 'south' ");
 		} else if (input.equals("explore")) {
 			System.out.println("You are in " + currentLocation.getName() + ":" + currentLocation.getDescription());
@@ -131,7 +129,7 @@ public class GameHelper {
 			System.out.println("commands : 'go [direction]' , 'explore', 'attack', 'use [item]' , show health , show attack damage");
 		} else if (input.startsWith("go ")) {
 			// handle movement of the player
-			handleMovement(input.substring(3), player, currentLocation, levelOne, levelTwo, levelThree); // take the input after 'go ' to trigger the location
+			handleMovement(input.substring(3), player, currentLocation); // take the input after 'go ' to trigger the location
 		} else if (input.startsWith("use ")) {
 			String itemName = input.substring(4).toLowerCase();// take the input after at 4th character and beyond
 			if (items.containsKey(itemName)) {
@@ -176,8 +174,7 @@ public class GameHelper {
 	 * 
 	 * @param levelOne , levelTwo, levelThree : track the level of the of the player
 	 */
-	public static void handleMovement(String input, Player player, Location currentLocation, boolean levelOne,
-			boolean levelTwo, boolean levelThree) {
+	public static void handleMovement(String input, Player player, Location currentLocation) {
 		try {
 			Direction dir = Direction.valueOf(input.toUpperCase()); // converting string to UpperCase for enum use
 			Location nextLocation = player.getLocation().getExit(dir); // nextLocation to go
